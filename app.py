@@ -1,9 +1,14 @@
 import streamlit as st
 import pickle
 import numpy as np
+import os   # 👈 ADD THIS
 
-# Load model
-model = pickle.load(open("student_model.pkl", "rb"))
+# ===== ADD THIS BLOCK HERE =====
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE_DIR, "student_model.pkl")
+
+model = pickle.load(open(model_path, "rb"))
+# ==============================
 
 # Title
 st.title("🎓 Student Grade Prediction App")
