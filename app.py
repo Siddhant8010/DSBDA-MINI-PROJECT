@@ -57,5 +57,5 @@ if st.button("Predict Grade"):
     # 🔥 AI RECOMMENDATIONS (MOVE INSIDE BUTTON)
     ai_response = get_ai_recommendation(g1, g2, studytime, round(prediction))
 
-    st.subheader("🤖 AI Recommendations")
+    st.subheader(" AI Recommendations")
     st.write(ai_response)
