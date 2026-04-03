@@ -28,7 +28,6 @@ def get_ai_recommendation(g1, g2, studytime, prediction):
     except Exception as e:
         return f"Could not fetch AI recommendations at this time. (Error: {e})"
 
-
 st.title("🎓 Student Grade Prediction App")
 
 st.write("Enter student details to predict final grade (G3)")
