@@ -17,17 +17,25 @@ model = pickle.load(open(model_path, "rb"))
 
 
 def get_ai_recommendation(g1, g2, studytime, prediction):
-    try:
-        prompt = f"""
-        A student has G1={g1}, G2={g2}, Study time={studytime}.
-        Predicted final grade={prediction}.
-        Give 3 short, practical recommendations to improve performance.
-        """
-        response = model_ai.generate_content(prompt)
-        return response.text
-    except Exception as e:
-        return f"Could not fetch AI recommendations at this time. (Error: {e})"
+    prompt = f"""
+    A student has:
+    - G1 (first grade): {g1} out of 20
+    - G2 (second grade): {g2} out of 20
+    - Study time level: {studytime} (1=low, 4=high)
+    - Predicted final grade: {prediction} out of 20
 
+    Note:
+    - 0-10 = low performance
+    - 10-15 = average performance
+    - 15-20 = good performance
+
+    Give 3 simple, practical and realistic recommendations 
+    specifically to improve marks (not generic advice).
+    Keep it short and student-friendly.
+    """
+    
+    response = model_ai.generate_content(prompt)
+    return response.text
 st.title("🎓 Student Grade Prediction App")
 
 st.write("Enter student details to predict final grade (G3)")
